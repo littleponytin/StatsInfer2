@@ -1,0 +1,96 @@
+---
+  title: "Statistical Inference Course Project"
+  author: "LPT"
+  date: "Tuesday, Jan 20, 2014"
+---
+  
+## Synopsis:
+We're going to analyze the ToothGrowth data in the R datasets package.  
+Provide a basic summary of the data. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there's other approaches worth considering). State your conclusions and the assumptions needed for your conclusions. 
+
+```{r knitr_options, include=FALSE, echo=TRUE}
+library(knitr)
+opts_chunk$set(fig.width=12, fig.height=4, fig.path='RmdFigs/',
+               warning=FALSE, message=FALSE)
+```
+
+##1.Load the ToothGrowth data and perform some basic exploratory data analyses
+```{r load, cache=TRUE}
+library(datasets)
+data(ToothGrowth)
+#preview the dataset
+head(ToothGrowth)
+
+
+# exploring the data
+nrow(ToothGrowth)
+
+str(ToothGrowth)
+
+# convert dose field from numeric to factor
+ToothGrowth$dose <- as.factor(ToothGrowth$dose)
+
+# view data set again
+str(ToothGrowth)
+
+#let's plot it out and visualise the data
+library(ggplot2)
+
+ggplot(aes(x=dose, y=len), data=ToothGrowth) + geom_boxplot(aes(fill=dose)) + xlab("Dose in miligrams") + ylab("Tooth length") + guides(fill=guide_legend(title="Dose"))
+```
+
+#2. Provide a basic summary of the data.
+```{r summary, cache=TRUE}
+summary(ToothGrowth)
+```
+
+#3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. 
+```{r compare, cache=TRUE}
+t.test(len ~ supp, data = ToothGrowth)
+
+#a. Compare by Supplement
+
+t1 <- t.test(len~supp, paired=F, var.equal=F, data=ToothGrowth)
+t1.summary <- data.frame("p-value"=c(t1$p.value),"CI-Lower"=c(t1$conf[1]), "CI-Upper"=c(t1$conf[2]), 
+     row.names=c("OJ vs. VC:  "))
+round(t1.summary,4)
+
+#b. Compare by Dosage
+df05 <- subset(ToothGrowth, ToothGrowth$dose==.5)
+df10 <- subset(ToothGrowth, ToothGrowth$dose==1)
+df20 <- subset(ToothGrowth, ToothGrowth$dose==2)
+
+t0510<- t.test(df05$len, df10$len, paired=F, var.equal=F)
+t0520<- t.test(df05$len, df20$len, paired=F, var.equal=F)
+t1020<- t.test(df10$len, df20$len, paired=F, var.equal=F)
+
+summaryDose <- data.frame("p-value"=c(t0510$p.value,t0520$p.value,t1020$p.value), 
+     "CI-Lower"=c(t0510$conf[1],t0520$conf[1],t1020$conf[1]),
+     "CI-Upper"=c(t0510$conf[2],t0520$conf[2],t1020$conf[2]),
+     row.names=c(".5mg vs 1mg: ", ".5mg vs 2mg: ","1mg vs 2mg: "))
+
+round(summaryDose, 6)
+
+#c. Compare Supplement within each dosage group
+
+t05 <- t.test(len~supp, paired=F, var.equal=F, data=df05)
+t10 <- t.test(len~supp, paired=F, var.equal=F, data=df10)
+t20 <- t.test(len~supp, paired=F, var.equal=F, data=df20)
+
+summarySuppDose <- data.frame("p-value"=c(t05$p.value,t10$p.value,t20$p.value), 
+     "CI-Lower"=c(t05$conf[1],t10$conf[1],t20$conf[1]),
+     "CI-Upper"=c(t05$conf[2],t10$conf[2],t20$conf[2]),
+     row.names=c(".5mg OJ vs. VC: ", "1mg OJ vs. VC: ","2mg OJ vs. VC: "))
+
+round(summarySuppDose, 6)
+```
+
+#4. Conclusions
+
+Assumed variance is not the same and test population is small, hence t-test is used.
+
+With low doses such as (0.5 and 1), the orange juice causes more growth than the ascorbic acid.
+With the high dose (2), there's no significant difference in the supplement. 
+
+It is apparent that higher dosages had a significant effect on toothgrowth. In all cases, p-values were incredible small and no confidence interval contained zero in 3rd test
+

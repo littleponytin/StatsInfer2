@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<title>Synopsis:</title>
+
+<script type="text/javascript">
+window.onload = function() {
+  var imgs = document.getElementsByTagName('img'), i, img;
+  for (i = 0; i < imgs.length; i++) {
+    img = imgs[i];
+    // center an image if it is the only element of its parent
+    if (img.parentElement.childElementCount === 1)
+      img.parentElement.style.textAlign = 'center';
+  }
+};
+</script>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: #990073
+   }
+
+   pre .number {
+     color: #099;
+   }
+
+   pre .comment {
+     color: #998;
+     font-style: italic
+   }
+
+   pre .keyword {
+     color: #900;
+     font-weight: bold
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: #d14;
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 13px;
+}
+
+body {
+  max-width: 800px;
+  margin: auto;
+  padding: 1em;
+  line-height: 20px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 {
+   font-size:2.2em;
+}
+
+h2 {
+   font-size:1.8em;
+}
+
+h3 {
+   font-size:1.4em;
+}
+
+h4 {
+   font-size:1.0em;
+}
+
+h5 {
+   font-size:0.9em;
+}
+
+h6 {
+   font-size:0.8em;
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre, img {
+  max-width: 100%;
+}
+pre {
+  overflow-x: auto;
+}
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code {
+  font-size: 92%;
+  border: 1px solid #ccc;
+}
+
+code[class] {
+  background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * {
+      background: transparent !important;
+      color: black !important;
+      filter:none !important;
+      -ms-filter: none !important;
+   }
+
+   body {
+      font-size:12pt;
+      max-width:100%;
+   }
+
+   a, a:visited {
+      text-decoration: underline;
+   }
+
+   hr {
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote {
+      padding-right: 1em;
+      page-break-inside: avoid;
+   }
+
+   tr, img {
+      page-break-inside: avoid;
+   }
+
+   img {
+      max-width: 100% !important;
+   }
+
+   @page :left {
+      margin: 15mm 20mm 15mm 10mm;
+   }
+
+   @page :right {
+      margin: 15mm 10mm 15mm 20mm;
+   }
+
+   p, h2, h3 {
+      orphans: 3; widows: 3;
+   }
+
+   h2, h3 {
+      page-break-after: avoid;
+   }
+}
+</style>
+
+
+
+</head>
+
+<body>
+<h2>Synopsis:</h2>
+
+<p>We&#39;re going to analyze the ToothGrowth data in the R datasets package.<br/>
+Provide a basic summary of the data. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. (Only use the techniques from class, even if there&#39;s other approaches worth considering). State your conclusions and the assumptions needed for your conclusions. </p>
+
+<p>##1.Load the ToothGrowth data and perform some basic exploratory data analyses</p>
+
+<pre><code class="r">library(datasets)
+data(ToothGrowth)
+#preview the dataset
+head(ToothGrowth)
+</code></pre>
+
+<pre><code>##    len supp dose
+## 1  4.2   VC  0.5
+## 2 11.5   VC  0.5
+## 3  7.3   VC  0.5
+## 4  5.8   VC  0.5
+## 5  6.4   VC  0.5
+## 6 10.0   VC  0.5
+</code></pre>
+
+<pre><code class="r"># exploring the data
+nrow(ToothGrowth)
+</code></pre>
+
+<pre><code>## [1] 60
+</code></pre>
+
+<pre><code class="r">str(ToothGrowth)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    60 obs. of  3 variables:
+##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ dose: num  0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 ...
+</code></pre>
+
+<pre><code class="r"># convert dose field from numeric to factor
+ToothGrowth$dose &lt;- as.factor(ToothGrowth$dose)
+
+# view data set again
+str(ToothGrowth)
+</code></pre>
+
+<pre><code>## &#39;data.frame&#39;:    60 obs. of  3 variables:
+##  $ len : num  4.2 11.5 7.3 5.8 6.4 10 11.2 11.2 5.2 7 ...
+##  $ supp: Factor w/ 2 levels &quot;OJ&quot;,&quot;VC&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+##  $ dose: Factor w/ 3 levels &quot;0.5&quot;,&quot;1&quot;,&quot;2&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+</code></pre>
+
+<pre><code class="r">#let&#39;s plot it out and visualise the data
+library(ggplot2)
+
+ggplot(aes(x=dose, y=len), data=ToothGrowth) + geom_boxplot(aes(fill=dose)) + xlab(&quot;Dose in miligrams&quot;) + ylab(&quot;Tooth length&quot;) + guides(fill=guide_legend(title=&quot;Dose&quot;))
+</code></pre>
+
+<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA2AAAAEgCAMAAADli+DTAAAA0lBMVEUAAAAAADoAAGYAOmYAOpAAZpAAZrYAujgzMzM6AAA6ADo6AGY6OmY6OpA6kNthnP9mAABmADpmAGZmOgBmOjpmOpBmtv9/f39/f5V/f6t/lcF/q9aQOgCQOjqQOmaQZgCQkGaQkLaQ2/+Vf3+Vweurf6urlZWrlcGr1v+2ZgC22/+2/7a2///BlX/BlZXBlavBwdbB6//Wq3/W///bkDrb25Db/7bb///l5eXrwZXr///y8vL4dm3/tmb/1qv/25D/27b//7b//9b//9v//+v///8PrXj1AAAACXBIWXMAAAsSAAALEgHS3X78AAAOXklEQVR4nO2diVobyRVGNR6H4EnMrEEe25OF4AQldjwGEjc4iGDo93+ldGmBtoS2Ll3dv/ue8zEgcKO5v6pO14Ja6pUAYEbPuwCALoNgAIYgGIAhCAZgCIIBGIJgAIYgGIAhCAZgCIIBGIJgAIYgGIAhCAZgCIIBGLKJYIUQUsUYEiWnUlAEK6Taw5QoOZWCIlgh1R6mRMmpFNRNsE9CSBVjSJScSkHdBPM+s9SRKsaQKDmVgiJYIdUepkTJqRQUwQqp9jAlSk6loAhWSLWHKVFyKgVFsEKqPUyJklMpKIIVUu1hSpScSkERrJBqD1Oi5FQKimCFVHuYEiVnse9dwAMIVsTpeFFyIhiCuRAlJ4IhmAtRciIYgrkQJSeCIZgLUXIiGIK5ECUngiGYC1FyIhiCuRAlJ4IhmAtRciIYgrkQJSeCIZgLUXIiGIK5ECUngiGYC1FyIhiCuRAlJ4IhmAtRciIYgrkQJSeCIZgLUXIiGIK5ECUngiGYC1FyIhiCuRAlJ4IhmAtRciIYgrkQJSeCIZgLUXIiGIK5ECVnQMFO+/2T9PnFBwTzI0rOeIINX5Wf35wNX15WHwjmRpSc8QSrqAS7OE6fq9v9iq3+jwHq7HsXYMQSwU77x+XFSXn3/mzyA+8zSx2pYgyJkjPkCFZeHN+PYAjmQ5Sc8QQbHifBWIM5EyVnPMHSLuIrdhG9iZIzoGDzeAevI1WMIVFyIhiCuRAlJ4IhmAtRciIYgrkQJSeCIZgLUXIiGIK5ECUngiGYC1FyIhiCuRAlJ4IhmAtRciIYgrkQJSeCIZgLUXIiGIK5IJdzv2U0iIhghWDHM0Iu5/63rQLBGiJVjCFyOREMwbqEXE4EQ7AuIbT2H4NgCNYlECwPBGuIVDGGIFgeCNYQqWIMQbA8EKwhUsUYgmB5IFhDpIoxBMHyQLCGSBVjCILlgWANkSrGEATLA8EaIlWMIQiWB4I1RKoYQ/QEaxkNIiJYgWBueAuzKQ0iIliBYG4wRUSwLoFgeSBYQ6SKMQTB8kCwhkgVYwiC5YFgDZEqxhAEy6NVgn0SQqoYQ/a9C5ilbYI1iOgm2NbPhhlIFWMII1gerRrBtt5YGUgVYwiC5YFgDZEqxhAEywPBGiJVjCEIlgeCNUSqGEMQLA8Ea4hUMYYgWB4I1hCpYgxBsDwQrCFSxRiCYHkgWEOkijEEwfJQE+yql3jyFsFEQLA8xAS7+f5oybFbb6wMpIoxRE+wltEgoqVgPzw+diHYSrw70oZ4P1xzCFVkKFh5foBgzdj/bZsQ6s4ThCr6stePVk2HWxHs5rtejzVYQxAsD6GKZgSrbLj+ZtnSaW3BVuEdvI5UMQkEy0OoonnBbl8flINeb6+6kT6n28umeosFG6/BFq3EvIPXkSomgWB5CFX0mGB71Zeb7w6qoex//yjP0+01Z42PThGffkSwTUGwPIQqekywg/NKisFeGruevB0kSdYcwthF3BIIlodQRfOCVQPXeAQbDUOH5wtGoNWCLcc7eB2pYhIIlodQRTOCTXYR79dgTz+OPzcRbDpJfHwb0Tt4HaliEgiWh1BFG4w5mwpWDtIgeL539aif3sHrSBWTQLA8hCoyFGy6i/jPR9di3sHrSBWTQLA8hCoyFCzt91cj2NN/PxcfwXo97wpmQbA8hCoyFGy0lOvtLdjk9w7+QFonetcwA4LlIVTRTLfPe93Edu4iIlgmQt15glBFCwTbDyQYU8RMhLrzBKGKLAXjgsumIFgeQhXNCfbllT45gi1/hpV38DpSxSQQLA+hiuYF+2+NPMF4qlRTECwPoYrWEGzQ+2p8AcugN721lmDjPzQjWAMQLA+hilYLdvX04/i5GLe/rLpQ7NGnSrEG2xwEy0OoonnBZtdg5wfT52T89CxdH7a2YMvxDl5HqpgEguUhVNG8YLMj2PlhefvHJFh6qv350ivDEGxLIFgeQhWtIdhBbbviaumVYTOC3b7uPf3P6LXb7t71+y8vy9P+iw8ItgYIlodQRasFu1+DJbk2GcFuXx9cPx//7vBVWZ6eDF9eVh8IthoEy0OootWCjXcRb/7wcfWrc8xt01eC3Y9+FycXx+XnN2fVzX7F0juKTssE83645tCraMo2/9A8HsGmV0RXg9jFSXn3/mzyr95nljpSxSRaJpj3wzWHUEVzgm3xqVLpYujp1dCn1STxfgRDsBUgWB5CFVkK9sDdu5PqM2uwdUGwPIQqWiDYli9XOU2rrmN2EdcFwfIQqmgjgTYRjJfOzsD2vRq2jvfDNYdQRTPdPuIFlwiWi/fDNYdQRQsEC3XBpaBg3rO+jRDqzhOEKkKwAsEyEerOE4QqmhPsy8EfwVxAsDyEKpoX7IuHDsFcQLA8hCqyFIzX5GgKguUh1KDrCLb82v+FgvEm6I1BsDyEGnQNwa4WDUKrBOM1OZqCYHkINei8YLObHLd/GV9vubFgvAl6YxAsD6EGnRfsi4duNEVsJBjP5MgAwfIQalAzwVbhHbyOVDEJBMtDqEENBWvPm6DL9RAEy0Ood80LNv+H5rwpYgveBF2uhyBYHkK9a06w7T1Vqj27iHI9BMHyEOpdhoItxzt4HbkegmB5CPUuS8HqLxmAYJuAYHkI9a6NBNpMsOlbyLIG2xgEy0Ood810+21ecMkuYmMQLA+h3rVAsG1MERnBGoNgeQj1LkPBWIM1BsHyEOpdloItxTt4HbkegmB5CPWuOcEiXtEs10O2/7o0png/XHMI9a55wb6tkScYU0QxouRsl2BJk0WWLBWMTQ41ouRsl2BXe2U5WPquRQsEY5tejSg5tQX7gskUcfnbgi0QjBFMjSg5tQV7ZA12tfytmRcIxhpMjSg52ybYYE2/2EUUJ0rOdgl2+3q9+eGMYKteiso7eJ0oHS9KTm3BZtdgg3TV5PK3jkWwdhAlp7Rg23omxyrB5p5W7Mj+6kM6QZScn4R6l51gLXpVqShn9ig5GcEQzIUoOVsg2KIRDsHaTJScwoLlgWDaRMkZQrBVeAevE6XjRcmJYAjmQpScCIZgLkTJiWAI5kKUnAiGYC5EyYlgCOaC1INuiVBQBCsQrHMIBUWwAsE6h1BQBCsQrHMIBUWwAsE6h1BQBCsQrHMIBUWwAsE6h1BQBCsQrHMIBUWwAsE6h1BQBCsQrHMIBW2VYLt7O4PtsO3GykWo39kiFLRdgv23VSCYF0JBEcwOBPNCKCiC2YFgXggFRTA7EMwLoaAIZgeCeSEUFMHsQDAvhIIimB0I5oVQUASzA8G8EAqKYHYgmBdCQRHMDgTzQigogtmBYF4IBUUwOxDMC6GgCGYHgnkhFHRXgn1+c1aWp/0XHxDMD6F+Z4tQ0B0JNuz/fFYOX15WHwjmhlC/s0Uo6G4Eu/v17v1ZeXE8HsjKfkWT+/e+vmtTGj+QAI+xZIo4Euxk9GVMk7OBtzCbsu2zYS5CJ3ZbhILuVLDpCNZYMO9J32YgmBdCQXcpGGswZ4T6nS1CQXcpGLuIzgj1O1uEgu5KsDmaFItgeQj1O1uEgiKYHQjmhVBQBLMDwbwQCopgdiCYF0JBEcwOBPNCKCiC2YFgXggFRTA7EMwLoaAIZgeCeSEUFMHsQDAvhIIimB0I5oVQUASzA8G8EAqKYHYgmBdCQRHMDgTzQigogtmBYF4IBUUwOxDMC6Gg7RKsZWy7sXIR6ne2CAVtlWBWyJlghNSDbolQUAQrEKxzCAVFsALBOodQUAQrEKxzCAVFsALBOodQUAQrEKxzCAVFsALBOodQUAQrEKxzCAVFsALBOodQUAQrEKxzCAVFsALBOodQUAQrEKxzCAVFsALBOodQUAQrEKxzCAVFsALBOodQUDfBPgmx713AjpB60C0RCuommPeZpQ4jWMcQCopgBYJ1DqGgCFYgWOcQCopgBYJ1DqGgCFZItYcpUXIqBUWwQqo9TImSUykoghVS7WFKlJxKQRGskGoPU6LkVAqKYIVUe5gSJadSUAQrpNrDlCg5lYIiWCHVHqZEyakUFMEKqfYwJUpOpaAIVki1hylRcioFRbBCqj1MiZJTKSiCFVLtYUqUnEpB3QRTou9dwI6IkrOzQRFMmyg5OxsUwbSJkrOzQRFMmyg5Oxu0rYIBtAIEAzAEwQAMQTAAQxAMwJDWCXbaf/FhcmN6q8N8fnPmXcIuuHvX77+89K7ChLYJNnx5ORw1xd2/Om9Xlbb/cwjBhq+qE+aJdxUmtE2wi+PJWf3z3/7af+VdjTF3v969DyFY4gLBFKiaYdzphtW5vaNtUiOOYMOOni1bJ9hxbV0yPHatZQeEEey0o361TrD7NViSixGsI9y962xLtk2w8S7i579fpl3Ezg9gUQSr2rKrrdk6wQDaBIIBGIJgAIYgGIAhCAZgCILtkOtnvYrDJQf87u2in48/jAoDMxBsh4wMufluiWErfhdaB4LtkLEk188/Vpb1nlS3r3qjL5PvxiPV8z9NBrnbX/7c6x1UhxzURrDq0K9/Orr+/Y9P3qbx8LB+1PTuQAgE2yFjwW6+PyoHB+XV0483P7wtz/fK9F36Mhbs2eifqm9uX+9Vk8q9B7vSr6df/Oro+tnh6G6qn9SOmt4dCIFgO2Qs2O0vR0mFSpDkSDk2Lv1kutZ6OG70X/XP94Klw6qfTeeL1be1oyZ3B0og2A65H8HSjWRFNcv76ihN+3rp6xqCpenlvWCDNCOsHTW5O1ACwXbI2IvJ3HAy3ky+uz9g7REsbZakKWJNsPHdOYWDR0GwHfKwizhegyUb0n+D6bJrpWDTNdjkoOtvjmpHTe8OhECwHfLwd7DJvuHgfhdxPLVbLVh16G8mU8TzXu/rHw/rI9iAXUQ5EKx18BexNoFgreL2dY99jFaBYACGIBiAIQgGYAiCARiCYACGIBiAIQgGYAiCARjyf8DAMGljbPfiAAAAAElFTkSuQmCC" alt="plot of chunk load"/> </p>
+
+<p>#2. Provide a basic summary of the data.</p>
+
+<pre><code class="r">summary(ToothGrowth)
+</code></pre>
+
+<pre><code>##       len        supp     dose   
+##  Min.   : 4.20   OJ:30   0.5:20  
+##  1st Qu.:13.07   VC:30   1  :20  
+##  Median :19.25           2  :20  
+##  Mean   :18.81                   
+##  3rd Qu.:25.27                   
+##  Max.   :33.90
+</code></pre>
+
+<p>#3. Use confidence intervals and/or hypothesis tests to compare tooth growth by supp and dose. </p>
+
+<pre><code class="r">t.test(len ~ supp, data = ToothGrowth)
+</code></pre>
+
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  len by supp
+## t = 1.9153, df = 55.309, p-value = 0.06063
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.1710156  7.5710156
+## sample estimates:
+## mean in group OJ mean in group VC 
+##         20.66333         16.96333
+</code></pre>
+
+<pre><code class="r">#a. Compare by Supplement
+
+t1 &lt;- t.test(len~supp, paired=F, var.equal=F, data=ToothGrowth)
+t1.summary &lt;- data.frame(&quot;p-value&quot;=c(t1$p.value),&quot;CI-Lower&quot;=c(t1$conf[1]), &quot;CI-Upper&quot;=c(t1$conf[2]), 
+     row.names=c(&quot;OJ vs. VC:  &quot;))
+round(t1.summary,4)
+</code></pre>
+
+<pre><code>##              p.value CI.Lower CI.Upper
+## OJ vs. VC:    0.0606   -0.171    7.571
+</code></pre>
+
+<pre><code class="r">#b. Compare by Dosage
+df05 &lt;- subset(ToothGrowth, ToothGrowth$dose==.5)
+df10 &lt;- subset(ToothGrowth, ToothGrowth$dose==1)
+df20 &lt;- subset(ToothGrowth, ToothGrowth$dose==2)
+
+t0510&lt;- t.test(df05$len, df10$len, paired=F, var.equal=F)
+t0520&lt;- t.test(df05$len, df20$len, paired=F, var.equal=F)
+t1020&lt;- t.test(df10$len, df20$len, paired=F, var.equal=F)
+
+summaryDose &lt;- data.frame(&quot;p-value&quot;=c(t0510$p.value,t0520$p.value,t1020$p.value), 
+     &quot;CI-Lower&quot;=c(t0510$conf[1],t0520$conf[1],t1020$conf[1]),
+     &quot;CI-Upper&quot;=c(t0510$conf[2],t0520$conf[2],t1020$conf[2]),
+     row.names=c(&quot;.5mg vs 1mg: &quot;, &quot;.5mg vs 2mg: &quot;,&quot;1mg vs 2mg: &quot;))
+
+round(summaryDose, 6)
+</code></pre>
+
+<pre><code>##               p.value   CI.Lower   CI.Upper
+## .5mg vs 1mg:  0.0e+00 -11.983781  -6.276219
+## .5mg vs 2mg:  0.0e+00 -18.156167 -12.833833
+## 1mg vs 2mg:   1.9e-05  -8.996481  -3.733519
+</code></pre>
+
+<pre><code class="r">#c. Compare Supplement within each dosage group
+
+t05 &lt;- t.test(len~supp, paired=F, var.equal=F, data=df05)
+t10 &lt;- t.test(len~supp, paired=F, var.equal=F, data=df10)
+t20 &lt;- t.test(len~supp, paired=F, var.equal=F, data=df20)
+
+summarySuppDose &lt;- data.frame(&quot;p-value&quot;=c(t05$p.value,t10$p.value,t20$p.value), 
+     &quot;CI-Lower&quot;=c(t05$conf[1],t10$conf[1],t20$conf[1]),
+     &quot;CI-Upper&quot;=c(t05$conf[2],t10$conf[2],t20$conf[2]),
+     row.names=c(&quot;.5mg OJ vs. VC: &quot;, &quot;1mg OJ vs. VC: &quot;,&quot;2mg OJ vs. VC: &quot;))
+
+round(summarySuppDose, 6)
+</code></pre>
+
+<pre><code>##                   p.value  CI.Lower CI.Upper
+## .5mg OJ vs. VC:  0.006359  1.719057 8.780943
+## 1mg OJ vs. VC:   0.001038  2.802148 9.057852
+## 2mg OJ vs. VC:   0.963852 -3.798070 3.638070
+</code></pre>
+
+<p>#4. Conclusions</p>
+
+<p>Assumed variance is not the same and test population is small, hence t-test is used.</p>
+
+<p>With low doses such as (0.5 and 1), the orange juice causes more growth than the ascorbic acid.
+With the high dose (2), there&#39;s no significant difference in the supplement. </p>
+
+<p>It is apparent that higher dosages had a significant effect on toothgrowth. In all cases, p-values were incredible small and no confidence interval contained zero in 3rd test</p>
+
+</body>
+
+</html>
